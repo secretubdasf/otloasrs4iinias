@@ -1,0 +1,29 @@
+$('header').fadeIn();
+$('#intro').css('height','auto');
+
+$('#hamburger').click(function(){
+    $(this).toggleClass('open');
+    $('nav').toggleClass('menuShow');
+    $('body').toggleClass('stopScroll');
+});
+$("#owl-intro").owlCarousel({
+    singleItem:true,
+    items:1,
+    lazyLoad:true,
+    dots:true,
+    loop:true
+});
+$(window).scroll(function (event) {
+    var elemento = Math.round($('#home').offset().top) - 60;
+    var topPagina = $(window).scrollTop();
+    if(elemento < topPagina){
+        $('#hamburger').fadeIn();
+        $('#headHome').css('position','fixed');
+        $('#headHome').css('top', 0);
+        $('.espacio').css('position','static');
+    }else if(elemento > topPagina ){
+        $('#hamburger').fadeOut();
+        $('.espacio').css('position','fixed');
+        $('#headHome').css('position','static');
+    }
+});
